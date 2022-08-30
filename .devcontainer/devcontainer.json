@@ -1,0 +1,21 @@
+{
+    "name": "FreeRADIUS",
+    "dockerFile": "Dockerfile",
+    "context": "..",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+    },
+
+    // Uncomment the next line if you want to publish any ports.
+    "appPort": [ "61822:22", "61880:80", "1812:1812/udp", "1813:1813/udp" ],
+
+    // set hostname on running container
+    "runArgs": [ "--hostname", "fr01" ],
+
+    // Uncomment the next line to run commands after the container is created.
+    // "postCreateCommand": "cp ${containerWorkspaceFolder}/.devcontainer/.screenrc /root/",
+
+    // Uncomment the next line to run commands after the container is created.
+    // "postStartCommand": "screen -wipe; screen -s /bin/sh -dmS code; nohup sh -c /usr/sbin/sshd -D >/dev/null 2>&1",
+    "postStartCommand": "/bin/sh run.sh",
+}
